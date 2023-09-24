@@ -4,7 +4,7 @@ namespace DatingApp.DataAccessLayer.Users
 {
     public interface IUsersRepository
     {
-        IEnumerable<UsersModel> GetAllUsers();
-        UsersModel GetUserById(int id);
+        Task<IEnumerable<UsersModel>> GetAllUsersAsync();
+        Task<UsersModel> GetUserByIdAsync(int id);
     }
 }

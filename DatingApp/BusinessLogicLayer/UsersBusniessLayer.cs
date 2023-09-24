@@ -11,15 +11,14 @@ namespace DatingApp.BusinessLogicLayer
         {
             _usersRepo = usersRepo;
         }
-
-        public UsersListVM GetAllUsers()
+        public async Task<UsersListVM> GetAllUsersAsync()
         {
-            return new UsersListVM(_usersRepo.GetAllUsers());
+            return new UsersListVM(await _usersRepo.GetAllUsersAsync());
         }
 
-        public UserViewModel GetUserById(int id)
+        public async Task<UserViewModel> GetUserByIdAsync(int id)
         {
-            return new UserViewModel(_usersRepo.GetUserById(id));
+            return new UserViewModel(await _usersRepo.GetUserByIdAsync(id));
         }
     }
 }

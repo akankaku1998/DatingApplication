@@ -16,15 +16,15 @@ namespace DatingApp.Controllers
         }
 
         [HttpGet]
-        public ActionResult<UsersListVM> List()
+        public async Task<ActionResult<UsersListVM>> List()
         {
-            return _usersBL.GetAllUsers();
+            return await _usersBL.GetAllUsersAsync();
         }
 
         [HttpGet("{id}")] // api/users/6
-        public ActionResult<UserViewModel> GetUser(int id)
+        public async Task<ActionResult<UserViewModel>> GetUser(int id)
         {
-            return _usersBL.GetUserById(id);
+            return await _usersBL.GetUserByIdAsync(id);
         }
     }
 }
