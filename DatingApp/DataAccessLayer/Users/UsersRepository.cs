@@ -1,5 +1,6 @@
 ﻿using DatingApp.Data;
 using DatingApp.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DatingApp.DataAccessLayer.Users
 {
@@ -12,14 +13,14 @@ namespace DatingApp.DataAccessLayer.Users
             _context = context;
         }
 
-        public IEnumerable<UsersModel> GetAllUsers()
+        public async Task<IEnumerable<UsersModel>> GetAllUsersAsync()
         {
-            return _context.Users.ToList();
+            return await _context.Users.ToListAsync();
         }
 
-        public UsersModel GetUserById(int id)
+        public async Task<UsersModel> GetUserByIdAsync(int id)
         {
-            return _context.Users.Find(id);
+            return await _context.Users.FindAsync(id);
         }
     }
 }
