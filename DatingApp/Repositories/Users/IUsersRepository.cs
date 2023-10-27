@@ -1,6 +1,6 @@
 ﻿using DatingApp.Models;
 
-namespace DatingApp.DataAccessLayer.Users
+namespace DatingApp.DataAccessLayer.Repositories
 {
     public interface IUsersRepository
     {

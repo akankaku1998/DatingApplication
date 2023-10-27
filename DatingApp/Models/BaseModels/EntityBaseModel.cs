@@ -2,8 +2,9 @@
 
 namespace DatingApp.Models.BaseModels
 {
-    public class TimestampModel
+    public class EntityBaseModel
     {
+        public int Id { get; set; }
         public DateTimeOffset Timestamp { get; set; }
 
         [Timestamp]
