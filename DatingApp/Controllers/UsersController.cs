@@ -1,5 +1,4 @@
-﻿using DatingApp.BusinessLogicLayer;
-using DatingApp.Models;
+﻿using DatingApp.Services;
 using DatingApp.ViewModels.Users;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,22 +8,22 @@ namespace DatingApp.Controllers
     [Route("api/[controller]")] // api/users
     public class UsersController : ControllerBase
     {
-        private readonly UsersBusniessLayer _usersBL;
-        public UsersController(UsersBusniessLayer usersBL)
+        private readonly UsersService _usersService;
+        public UsersController(UsersService usersService)
         {
-            _usersBL = usersBL;
+            _usersService = usersService;
         }
 
         [HttpGet]
         public async Task<ActionResult<UsersListVM>> List()
         {
-            return await _usersBL.GetAllUsersAsync();
+            return await _usersService.GetAllUsersAsync();
         }
 
         [HttpGet("{id}")] // api/users/6
         public async Task<ActionResult<UserViewModel>> GetUser(int id)
         {
-            return await _usersBL.GetUserByIdAsync(id);
+            return await _usersService.GetUserByIdAsync(id);
         }
     }
 }

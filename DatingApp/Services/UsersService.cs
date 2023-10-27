@@ -1,13 +1,13 @@
-﻿using DatingApp.DataAccessLayer.Users;
+﻿using DatingApp.Repositories.Users;
 using DatingApp.ViewModels.Users;
 
-namespace DatingApp.BusinessLogicLayer
+namespace DatingApp.Services
 {
-    public class UsersBusniessLayer
+    public class UsersService
     {
         private readonly IUsersRepository _usersRepo;
 
-        public UsersBusniessLayer(IUsersRepository usersRepo)
+        public UsersService(IUsersRepository usersRepo)
         {
             _usersRepo = usersRepo;
         }
