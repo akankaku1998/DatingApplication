@@ -1,4 +1,4 @@
-﻿using DatingApp.DataAccessLayer.Repositories;
+﻿using DatingApp.Repositories.Users;
 using DatingApp.ViewModels.Users;
 
 namespace DatingApp.Services

@@ -1,6 +1,6 @@
 using DatingApp.Services;
 using DatingApp.Data;
-using DatingApp.DataAccessLayer.Repositories;
+using DatingApp.Repositories.Users;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -2,7 +2,7 @@
 using DatingApp.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace DatingApp.DataAccessLayer.Repositories
+namespace DatingApp.Repositories.Users
 {
     public class UsersRepository : IUsersRepository
     {
