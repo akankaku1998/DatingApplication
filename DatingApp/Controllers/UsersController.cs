@@ -1,26 +1,25 @@
 ﻿using DatingApp.Services;
+using DatingApp.Services.Users;
 using DatingApp.ViewModels.Users;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DatingApp.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")] // api/users
-    public class UsersController : ControllerBase
+    public class UsersController : BaseApiController
     {
-        private readonly UsersService _usersService;
-        public UsersController(UsersService usersService)
+        private readonly IUsersService _usersService;
+        public UsersController(IUsersService usersService)
         {
             _usersService = usersService;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<UsersListVM>> List()
+        [HttpGet(nameof(List))]
+        public ActionResult<UsersListVM> List()
         {
-            return await _usersService.GetAllUsersAsync();
+            return _usersService.GetAllUsersAsync();
         }
 
-        [HttpGet("{id}")] // api/users/6
+        [HttpGet(nameof(GetUser))]
         public async Task<ActionResult<UserViewModel>> GetUser(int id)
         {
             return await _usersService.GetUserByIdAsync(id);

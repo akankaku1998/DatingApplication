@@ -1,10 +1,12 @@
 ﻿using DatingApp.Models;
+using DatingApp.Repositories.BaseEntity;
+using DatingApp.ViewModels.Users;
 
 namespace DatingApp.Repositories.Users
 {
-    public interface IUsersRepository
+    public interface IUsersRepository: IEntityRepository<UsersModel>
     {
-        Task<IEnumerable<UsersModel>> GetAllUsersAsync();
-        Task<UsersModel> GetUserByIdAsync(int id);
+        Task<UsersModel> GetById(int id);
+        Task<bool> CheckUniqueAttributes(UserViewModel user);
     }
 }
