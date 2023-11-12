@@ -10,6 +10,6 @@ namespace DatingApp.Services.Account
     public interface IAccountService
     {
         Task<UsersModel> RegisterUserAsync(UserViewModel viewModel);
-        Task<bool> UserUniqueAlreadyExistsAsync(UserViewModel user);
+        Task<string> UserUniqueAlreadyExistsAsync(UserViewModel user);
     }
 }

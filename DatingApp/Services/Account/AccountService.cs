@@ -18,6 +18,6 @@ namespace DatingApp.Services.Account
             await _usersRepository.AddAsync(user);
             return user;
         }
-        public async Task<bool> UserUniqueAlreadyExistsAsync(UserViewModel user) =>  await _usersRepository.CheckUniqueAttributes(user);
+        public async Task<string> UserUniqueAlreadyExistsAsync(UserViewModel user) =>  await _usersRepository.CheckUniqueAttributes(user);
     }
 }

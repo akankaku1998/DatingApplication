@@ -2,6 +2,7 @@ using DatingApp.Models;
 using DatingApp.Services.Account;
 using DatingApp.ViewModels.Users;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 namespace DatingApp.Controllers
 {
@@ -17,8 +18,9 @@ namespace DatingApp.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<UsersModel>> Register(UserViewModel viewModel)
         {
-            if(await _accountService.UserUniqueAlreadyExistsAsync(viewModel))
-            return BadRequest("Username or Email or Phone Number is already exists!");
+            var isAttributeAlreadyExistsMsg = await _accountService.UserUniqueAlreadyExistsAsync(viewModel);
+            if (!isAttributeAlreadyExistsMsg.IsNullOrEmpty())
+            return BadRequest(isAttributeAlreadyExistsMsg);
             return await _accountService.RegisterUserAsync(viewModel);
         }
     }

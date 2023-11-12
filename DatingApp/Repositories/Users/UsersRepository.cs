@@ -15,9 +15,16 @@ namespace DatingApp.Repositories.Users
             _context = context;
         }
 
-        public async Task<bool> CheckUniqueAttributes(UserViewModel user) => await
-        _context.Users.AnyAsync(u => u.Username == user.Username || u.Email == user.Email || u.PhoneNumber == user.PhoneNumber);
-
+        public async Task<string> CheckUniqueAttributes(UserViewModel user)
+        {
+            if(await _context.Users.AnyAsync(u => u.Username == user.Username))
+               return "Username is already exists!";
+            else if(await _context.Users.AnyAsync(u => u.Email == user.Email))
+                return "Email is already exists!";
+            else if (await _context.Users.AnyAsync(u => u.PhoneNumber == user.PhoneNumber))
+                return "Phone Number is already exists!";
+            return null;
+        }
         public async Task<UsersModel> GetById(int id) => await GetAllOrWithIncluding().SingleAsync(u => u.Id == id);
     }
 }

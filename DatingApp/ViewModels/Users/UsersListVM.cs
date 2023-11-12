@@ -5,10 +5,10 @@ namespace DatingApp.ViewModels.Users
     public class UsersListVM
     {
         public UsersListVM() { }
-        public UsersListVM(IEnumerable<UsersModel> users)
+        public UsersListVM(IEnumerable<UserViewModel> users)
         {
             List = users;
         }
-        public IEnumerable<UsersModel> List { get; set; }
+        public IEnumerable<UserViewModel> List { get; set; }
     }
 }

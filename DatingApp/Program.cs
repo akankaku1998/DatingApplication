@@ -16,6 +16,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(opt =>
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 builder.Services.AddMvc();
+builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUsersRepository, UsersRepository>();
 builder.Services.AddScoped<IUsersService, UsersService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
@@ -24,6 +25,8 @@ builder.Services.AddScoped<IAccountService, AccountService>();
 var app = builder.Build();
 app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
 app.MapControllers();
+app.UseSwagger();
+app.UseSwaggerUI();
 app.Run();
 
 

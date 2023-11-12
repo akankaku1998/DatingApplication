@@ -7,6 +7,6 @@ namespace DatingApp.Repositories.Users
     public interface IUsersRepository: IEntityRepository<UsersModel>
     {
         Task<UsersModel> GetById(int id);
-        Task<bool> CheckUniqueAttributes(UserViewModel user);
+        Task<string> CheckUniqueAttributes(UserViewModel user);
     }
 }

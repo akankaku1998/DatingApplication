@@ -17,7 +17,15 @@ namespace DatingApp.Services.Users
         }
         public UsersListVM GetAllUsersAsync()
         {
-            var list = _usersRepo.GetAllOrWithIncluding();
+            var list = _usersRepo.GetAllOrWithIncluding()
+            .Select(l => new UserViewModel(){
+                UserId = l.Id,
+                Username = l.Username,
+                FirstName = l.FirstName,
+                LastName = l.LastName,
+                Email = l.Email,
+                PhoneNumber = l.PhoneNumber
+            });
             return new UsersListVM(list);
         }
         public async Task<UserViewModel> GetUserByIdAsync(int id)
