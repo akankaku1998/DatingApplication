@@ -8,5 +8,6 @@ namespace DatingApp.Repositories.Users
     {
         Task<UsersModel> GetById(int id);
         Task<string> CheckUniqueAttributes(UserViewModel user);
+        Task<UsersModel> FindAsync(LoginViewModel login);
     }
 }
