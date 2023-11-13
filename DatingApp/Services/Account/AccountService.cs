@@ -12,6 +12,7 @@ namespace DatingApp.Services.Account
         {
             _usersRepository = usersRepository;
         }
+
         public async Task<UsersModel> RegisterUserAsync(UserViewModel viewModel)
         {
             var user = new UsersModel(viewModel);

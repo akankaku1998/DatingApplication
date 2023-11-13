@@ -25,6 +25,15 @@ namespace DatingApp.Repositories.Users
                 return "Phone Number is already exists!";
             return null;
         }
-        public async Task<UsersModel> GetById(int id) => await GetAllOrWithIncluding().SingleAsync(u => u.Id == id);
+
+        public async Task<UsersModel> FindAsync(LoginViewModel login)
+        => await _context.Users.SingleOrDefaultAsync(
+            u => u.Username == login.UsernameEmailPhoneNumber ||
+            u.PhoneNumber == login.UsernameEmailPhoneNumber ||
+            u.Email == login.UsernameEmailPhoneNumber
+            );
+
+        public async Task<UsersModel> GetById(int id)
+        => await GetAllOrWithIncluding().SingleAsync(u => u.Id == id);
     }
 }
